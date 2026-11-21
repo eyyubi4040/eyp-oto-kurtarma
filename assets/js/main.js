@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initPriceCalculator();
   initLiveLocationButtons();
-  initHeroSlider();
+  initGrandSlider();
 });
 
 /* --------------------------------------------------------------------------
@@ -236,28 +236,36 @@ function initLiveLocationButtons() {
 }
 
 /* --------------------------------------------------------------------------
-   HERO SHOWCASE SLIDER (Animated Interactive Carousel)
+   GRAND CINEMATIC HERO SLIDER
    -------------------------------------------------------------------------- */
-function initHeroSlider() {
-  const slider = document.getElementById('heroSlider');
+function initGrandSlider() {
+  const slider = document.getElementById('grandHeroSlider');
   if (!slider) return;
 
-  const track = document.getElementById('sliderTrack');
-  const slides = track ? track.querySelectorAll('.slider-slide') : [];
-  const prevBtn = document.getElementById('sliderPrevBtn');
-  const nextBtn = document.getElementById('sliderNextBtn');
-  const dots = document.querySelectorAll('.slider-dot');
-  const counterCurr = document.getElementById('sliderCurrentNum');
+  const slides = slider.querySelectorAll('.grand-slide');
+  const prevBtn = document.getElementById('grandPrevBtn');
+  const nextBtn = document.getElementById('grandNextBtn');
+  const pills = slider.querySelectorAll('.grand-pill');
+  const counterCurr = document.getElementById('grandCurrentNum');
+  const labelElem = document.getElementById('grandSlideLabel');
 
   if (!slides.length) return;
 
   let currentIndex = 0;
   const totalSlides = slides.length;
-  const slideDuration = 4500;
+  const slideDuration = 5000;
   let autoplayTimer = null;
   let isPaused = false;
 
-  function updateSlide(index) {
+  const slideLabels = [
+    '7/24 Nöbetçi Çekici Filosu',
+    'Hasarsız Yükleme & Taşıma',
+    '30 Ton Teleskopik Vinç',
+    'Mobil Akü & Yol Yardım',
+    'Şehirlerarası Araç Transferi'
+  ];
+
+  function showSlide(index) {
     if (index < 0) {
       currentIndex = totalSlides - 1;
     } else if (index >= totalSlides) {
@@ -266,10 +274,7 @@ function initHeroSlider() {
       currentIndex = index;
     }
 
-    // Smooth horizontal slide
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // Active slide state
+    // Toggle active slide
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === currentIndex);
     });
@@ -279,116 +284,109 @@ function initHeroSlider() {
       counterCurr.textContent = String(currentIndex + 1).padStart(2, '0');
     }
 
-    // Update pagination dots and reset CSS animation progress fill
-    dots.forEach((dot, i) => {
+    // Update active service label
+    if (labelElem && slideLabels[currentIndex]) {
+      labelElem.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${slideLabels[currentIndex]}`;
+    }
+
+    // Update pagination pills and reset fill animation
+    pills.forEach((pill, i) => {
       const isActive = (i === currentIndex);
-      dot.classList.toggle('active', isActive);
-      const fill = dot.querySelector('.dot-progress');
+      pill.classList.toggle('active', isActive);
+      const fill = pill.querySelector('.grand-pill-fill');
       if (fill) {
         fill.style.animation = 'none';
-        void fill.offsetWidth; // Force CSS reflow to restart keyframe
+        void fill.offsetWidth; // Force CSS reflow
         if (isActive && !isPaused) {
-          fill.style.animation = `dotFillAnim ${slideDuration}ms linear forwards`;
+          fill.style.animation = `grandFillAnim ${slideDuration}ms linear forwards`;
         }
       }
     });
 
-    resetTimer();
+    restartTimer();
   }
 
-  function startAutoplay() {
+  function startTimer() {
     clearTimeout(autoplayTimer);
     autoplayTimer = setTimeout(() => {
       if (!isPaused) {
-        updateSlide(currentIndex + 1);
+        showSlide(currentIndex + 1);
       }
     }, slideDuration);
   }
 
-  function resetTimer() {
+  function restartTimer() {
     clearTimeout(autoplayTimer);
     if (!isPaused) {
-      startAutoplay();
+      startTimer();
     }
   }
 
-  function pauseAutoplay() {
+  function pause() {
     isPaused = true;
     clearTimeout(autoplayTimer);
-    const activeDot = slider.querySelector('.slider-dot.active .dot-progress');
-    if (activeDot) {
-      activeDot.style.animationPlayState = 'paused';
+    const activeFill = slider.querySelector('.grand-pill.active .grand-pill-fill');
+    if (activeFill) {
+      activeFill.style.animationPlayState = 'paused';
     }
   }
 
-  function resumeAutoplay() {
+  function resume() {
     isPaused = false;
-    const activeDot = slider.querySelector('.slider-dot.active .dot-progress');
-    if (activeDot) {
-      activeDot.style.animationPlayState = 'running';
+    const activeFill = slider.querySelector('.grand-pill.active .grand-pill-fill');
+    if (activeFill) {
+      activeFill.style.animationPlayState = 'running';
     }
-    startAutoplay();
+    startTimer();
   }
 
   // Prev / Next button listeners
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      updateSlide(currentIndex - 1);
+      showSlide(currentIndex - 1);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      updateSlide(currentIndex + 1);
+      showSlide(currentIndex + 1);
     });
   }
 
-  // Dot click listeners
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', (e) => {
+  // Pill tab listeners
+  pills.forEach((pill, i) => {
+    pill.addEventListener('click', (e) => {
       e.preventDefault();
-      updateSlide(i);
+      showSlide(i);
     });
   });
 
   // Pause on hover
-  slider.addEventListener('mouseenter', pauseAutoplay);
-  slider.addEventListener('mouseleave', resumeAutoplay);
+  slider.addEventListener('mouseenter', pause);
+  slider.addEventListener('mouseleave', resume);
 
-  // Touch Swipe Support for mobile devices
-  let touchStartX = 0;
-  let touchEndX = 0;
-
+  // Touch Swipe for mobile
+  let startX = 0;
   slider.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-    pauseAutoplay();
+    startX = e.changedTouches[0].screenX;
+    pause();
   }, { passive: true });
 
   slider.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
+    const endX = e.changedTouches[0].screenX;
+    const diff = startX - endX;
     if (Math.abs(diff) > 40) {
       if (diff > 0) {
-        updateSlide(currentIndex + 1);
+        showSlide(currentIndex + 1);
       } else {
-        updateSlide(currentIndex - 1);
+        showSlide(currentIndex - 1);
       }
     }
-    resumeAutoplay();
+    resume();
   }, { passive: true });
 
-  // Keyboard navigation
-  slider.setAttribute('tabindex', '0');
-  slider.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      updateSlide(currentIndex - 1);
-    } else if (e.key === 'ArrowRight') {
-      updateSlide(currentIndex + 1);
-    }
-  });
-
-  // Initial setup
-  updateSlide(0);
+  // Initial trigger
+  showSlide(0);
 }
