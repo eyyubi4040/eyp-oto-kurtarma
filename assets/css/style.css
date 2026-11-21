@@ -2608,14 +2608,24 @@ footer.site-footer {
 .footer-designer-credit {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 8px;
   font-size: 13.5px;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-designer-credit span {
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .footer-designer-credit a {
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
@@ -2625,11 +2635,12 @@ footer.site-footer {
 }
 
 .kwd-logo-img {
-  height: 26px;
+  height: 24px;
   width: auto;
-  max-width: 135px;
+  max-width: 125px;
   object-fit: contain;
   vertical-align: middle;
+  flex-shrink: 0;
   filter: brightness(1.05) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
 
@@ -3021,10 +3032,27 @@ footer.site-footer {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    gap: 12px;
+    gap: 10px;
+    padding-right: 0;
   }
   .footer-designer-credit {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
     justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+  }
+  .footer-designer-credit span {
+    white-space: nowrap !important;
+    font-size: 13px;
+  }
+  .kwd-logo-img {
+    height: 22px;
+    width: auto;
+    max-width: 110px;
   }
   body {
     padding-bottom: 74px; /* Space for sticky bar */
