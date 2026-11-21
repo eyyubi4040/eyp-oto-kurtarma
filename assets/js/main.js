@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initPriceCalculator();
   initLiveLocationButtons();
+  initHeroSlider();
 });
 
 /* --------------------------------------------------------------------------
@@ -232,4 +233,162 @@ function initLiveLocationButtons() {
       }
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   HERO SHOWCASE SLIDER (Animated Interactive Carousel)
+   -------------------------------------------------------------------------- */
+function initHeroSlider() {
+  const slider = document.getElementById('heroSlider');
+  if (!slider) return;
+
+  const track = document.getElementById('sliderTrack');
+  const slides = track ? track.querySelectorAll('.slider-slide') : [];
+  const prevBtn = document.getElementById('sliderPrevBtn');
+  const nextBtn = document.getElementById('sliderNextBtn');
+  const dots = document.querySelectorAll('.slider-dot');
+  const counterCurr = document.getElementById('sliderCurrentNum');
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  const slideDuration = 4500;
+  let autoplayTimer = null;
+  let isPaused = false;
+
+  function updateSlide(index) {
+    if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+
+    // Smooth horizontal slide
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Active slide state
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+
+    // Update 01 / 05 counter
+    if (counterCurr) {
+      counterCurr.textContent = String(currentIndex + 1).padStart(2, '0');
+    }
+
+    // Update pagination dots and reset CSS animation progress fill
+    dots.forEach((dot, i) => {
+      const isActive = (i === currentIndex);
+      dot.classList.toggle('active', isActive);
+      const fill = dot.querySelector('.dot-progress');
+      if (fill) {
+        fill.style.animation = 'none';
+        void fill.offsetWidth; // Force CSS reflow to restart keyframe
+        if (isActive && !isPaused) {
+          fill.style.animation = `dotFillAnim ${slideDuration}ms linear forwards`;
+        }
+      }
+    });
+
+    resetTimer();
+  }
+
+  function startAutoplay() {
+    clearTimeout(autoplayTimer);
+    autoplayTimer = setTimeout(() => {
+      if (!isPaused) {
+        updateSlide(currentIndex + 1);
+      }
+    }, slideDuration);
+  }
+
+  function resetTimer() {
+    clearTimeout(autoplayTimer);
+    if (!isPaused) {
+      startAutoplay();
+    }
+  }
+
+  function pauseAutoplay() {
+    isPaused = true;
+    clearTimeout(autoplayTimer);
+    const activeDot = slider.querySelector('.slider-dot.active .dot-progress');
+    if (activeDot) {
+      activeDot.style.animationPlayState = 'paused';
+    }
+  }
+
+  function resumeAutoplay() {
+    isPaused = false;
+    const activeDot = slider.querySelector('.slider-dot.active .dot-progress');
+    if (activeDot) {
+      activeDot.style.animationPlayState = 'running';
+    }
+    startAutoplay();
+  }
+
+  // Prev / Next button listeners
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      updateSlide(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      updateSlide(currentIndex + 1);
+    });
+  }
+
+  // Dot click listeners
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      updateSlide(i);
+    });
+  });
+
+  // Pause on hover
+  slider.addEventListener('mouseenter', pauseAutoplay);
+  slider.addEventListener('mouseleave', resumeAutoplay);
+
+  // Touch Swipe Support for mobile devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    pauseAutoplay();
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        updateSlide(currentIndex + 1);
+      } else {
+        updateSlide(currentIndex - 1);
+      }
+    }
+    resumeAutoplay();
+  }, { passive: true });
+
+  // Keyboard navigation
+  slider.setAttribute('tabindex', '0');
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      updateSlide(currentIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      updateSlide(currentIndex + 1);
+    }
+  });
+
+  // Initial setup
+  updateSlide(0);
 }

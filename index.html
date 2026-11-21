@@ -165,81 +165,167 @@
           </div>
         </div>
 
-        <!-- HERO QUICK CALCULATOR CARD -->
-        <div class="hero-quick-card">
-          <div class="quick-card-header">
-            <span class="quick-card-badge"><i class="fa-solid fa-calculator"></i> Hızlı Fiyat & Çağrı</span>
-            <h2 class="quick-card-title">Çekici Ücreti Hesapla</h2>
-            <p class="quick-card-subtitle">Bulunduğunuz konumu seçin, anında fiyat öğrenin.</p>
+        <!-- HERO SHOWCASE SLIDER -->
+        <div class="hero-slider-card" id="heroSlider" aria-label="Hizmetlerimiz ve Araç Filomuz Slaytı">
+          <!-- TOP BAR: BADGE & COUNTER -->
+          <div class="slider-topbar">
+            <div class="slider-badge-live">
+              <span class="live-pulse"></span>
+              <span>7/24 Nöbetçi Filo</span>
+            </div>
+            <div class="slider-counter">
+              <span class="counter-curr" id="sliderCurrentNum">01</span>
+              <span class="counter-sep">/</span>
+              <span class="counter-total">05</span>
+            </div>
           </div>
 
-          <form class="quick-form" id="priceCalculatorForm" onsubmit="return false;">
-            <div class="form-group">
-              <label class="form-label" for="calcFrom">Bulunduğunuz Konum / İlçe</label>
-              <select id="calcFrom" class="form-control">
-                <option value="kirsehir-merkez">Kırşehir Merkez (Şehir İçi)</option>
-                <option value="sanayi-sitesi">Yeni Sanayi Sitesi</option>
-                <option value="ahi-evran-bagbasi">Ahi Evran / Bağbaşı</option>
-                <option value="petlas-cevre-yolu">Petlas / Çevre Yolu Kavşağı</option>
-                <option value="ozbag">Özbağ Beldesi</option>
-                <option value="mucur">Mucur İlçesi (25 km)</option>
-                <option value="kaman">Kaman İlçesi (55 km)</option>
-                <option value="akpinar">Akpınar İlçesi (40 km)</option>
-                <option value="cicekdagi">Çiçekdağı İlçesi (65 km)</option>
-                <option value="boztepe">Boztepe İlçesi (20 km)</option>
-                <option value="akcakent">Akçakent İlçesi (68 km)</option>
-                <option value="d260-karayolu">D260 Karayolu (Ankara-Kayseri)</option>
-                <option value="d715-karayolu">D715 Karayolu (Kırıkkale Yolu)</option>
-                <option value="ankara">Şehirlerarası: Ankara</option>
-                <option value="kayseri">Şehirlerarası: Kayseri</option>
-                <option value="nevsehir">Şehirlerarası: Nevşehir</option>
-                <option value="kirikkale">Şehirlerarası: Kırıkkale</option>
-                <option value="aksaray">Şehirlerarası: Aksaray</option>
-              </select>
+          <!-- SLIDER VIEWPORT -->
+          <div class="slider-viewport" id="sliderViewport">
+            <div class="slider-track" id="sliderTrack">
+              
+              <!-- SLIDE 1: KAYAR KASA -->
+              <article class="slider-slide active" data-index="0">
+                <div class="slide-media">
+                  <img src="assets/images/service-flatbed.jpg" alt="Kayar Kasa Hidrolik Oto Çekici" class="slide-image" width="600" height="380" loading="eager">
+                  <div class="slide-overlay-chip"><i class="fa-solid fa-bolt"></i> 15-20 Dk Varış</div>
+                </div>
+                <div class="slide-content">
+                  <div class="slide-meta-tags">
+                    <span class="slide-pill">Acil Çekici</span>
+                    <span class="slide-pill-sub">Sıfır Çizik Güvencesi</span>
+                  </div>
+                  <h3 class="slide-heading">Kayar Kasa Hidrolik Oto Çekici</h3>
+                  <p class="slide-text">Binek araçlar, SUV ve lüks otomobiller için hidrolik kayar platform ile hasarsız yükleme ve nakil.</p>
+                  <div class="slide-action-row">
+                    <a href="tel:+905550000000" class="btn-slide-call">
+                      <i class="fa-solid fa-phone-volume"></i> 0555 000 00 00
+                    </a>
+                    <a href="hizmetler.html#kayar-kasa" class="btn-slide-link">
+                      Detaylar <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- SLIDE 2: AHTAPOT VİNÇ -->
+              <article class="slider-slide" data-index="1">
+                <div class="slide-media">
+                  <img src="assets/images/service-crane.jpg" alt="Ahtapot Vinç & Şarampol Kurtarma" class="slide-image" width="600" height="380" loading="lazy">
+                  <div class="slide-overlay-chip chip-warning"><i class="fa-solid fa-truck-monster"></i> 30 Ton Güç</div>
+                </div>
+                <div class="slide-content">
+                  <div class="slide-meta-tags">
+                    <span class="slide-pill">Ağır Vasıta & Kaza</span>
+                    <span class="slide-pill-sub">4 Tekerden Kilitli</span>
+                  </div>
+                  <h3 class="slide-heading">Ahtapot Vinç & Kurtarma</h3>
+                  <p class="slide-text">Şarampol, çamur, kar veya kaza durumlarında 4 tekerden vinçli kaldırma sistemiyle güvenli tahliye.</p>
+                  <div class="slide-action-row">
+                    <a href="tel:+905550000000" class="btn-slide-call">
+                      <i class="fa-solid fa-phone-volume"></i> Vinç Çağır
+                    </a>
+                    <a href="hizmetler.html#vinc" class="btn-slide-link">
+                      Detaylar <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- SLIDE 3: YOL YARDIM -->
+              <article class="slider-slide" data-index="2">
+                <div class="slide-media">
+                  <img src="assets/images/service-roadside.jpg" alt="Mobil Yol Yardım & Akü Takviye" class="slide-image" width="600" height="380" loading="lazy">
+                  <div class="slide-overlay-chip chip-success"><i class="fa-solid fa-wrench"></i> Yerinde Çözüm</div>
+                </div>
+                <div class="slide-content">
+                  <div class="slide-meta-tags">
+                    <span class="slide-pill">Yol Yardım</span>
+                    <span class="slide-pill-sub">12V / 24V Takviye</span>
+                  </div>
+                  <h3 class="slide-heading">Yerinde Akü Takviye & Hızlı Müdahale</h3>
+                  <p class="slide-text">Akü bitmesi, lastik patlaması ve acil yakıt ihtiyaçlarında aracınızı yerinde çalışır duruma getiriyoruz.</p>
+                  <div class="slide-action-row">
+                    <a href="tel:+905550000000" class="btn-slide-call">
+                      <i class="fa-solid fa-phone-volume"></i> Yol Yardım İste
+                    </a>
+                    <a href="hizmetler.html#yol-yardim" class="btn-slide-link">
+                      Detaylar <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- SLIDE 4: ŞEHİRLERARASI TRANSFER -->
+              <article class="slider-slide" data-index="3">
+                <div class="slide-media">
+                  <img src="assets/images/service-transfer.jpg" alt="Şehirlerarası Çoklu Araç Taşıma" class="slide-image" width="600" height="380" loading="lazy">
+                  <div class="slide-overlay-chip"><i class="fa-solid fa-route"></i> 81 İl Ağı</div>
+                </div>
+                <div class="slide-content">
+                  <div class="slide-meta-tags">
+                    <span class="slide-pill">Şehirlerarası Sevk</span>
+                    <span class="slide-pill-sub">Tam Kasko Güvenceli</span>
+                  </div>
+                  <h3 class="slide-heading">Şehirlerarası Çoklu Araç Taşıma</h3>
+                  <p class="slide-text">Ankara, Kayseri, Kırıkkale, Nevşehir ve tüm Türkiye'ye çift katlı taşıyıcılarımızla ekonomik nakil.</p>
+                  <div class="slide-action-row">
+                    <a href="tel:+905550000000" class="btn-slide-call">
+                      <i class="fa-solid fa-phone-volume"></i> Sevk Fiyatı Al
+                    </a>
+                    <a href="hizmetler.html#sehirlerarasi" class="btn-slide-link">
+                      Detaylar <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- SLIDE 5: FİLO -->
+              <article class="slider-slide" data-index="4">
+                <div class="slide-media">
+                  <img src="assets/images/fleet.jpg" alt="EYP Oto Kurtarma Filosu" class="slide-image" width="600" height="380" loading="lazy">
+                  <div class="slide-overlay-chip"><i class="fa-solid fa-shield-halved"></i> Kırşehir Merkez</div>
+                </div>
+                <div class="slide-content">
+                  <div class="slide-meta-tags">
+                    <span class="slide-pill">Modern Kurtarma Filosu</span>
+                    <span class="slide-pill-sub">Otoyolda Nöbette</span>
+                  </div>
+                  <h3 class="slide-heading">7/24 Kesintisiz Otoyol & İlçe Desteği</h3>
+                  <p class="slide-text">Mucur, Kaman, Akpınar, Çiçekdağı ve çevre karayollarında her an hazır bekleyen profesyonel kadro.</p>
+                  <div class="slide-action-row">
+                    <a href="tel:+905550000000" class="btn-slide-call">
+                      <i class="fa-solid fa-phone-volume"></i> Hemen Ara
+                    </a>
+                    <a href="bolgeler.html" class="btn-slide-link">
+                      Bölgeler <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- SLIDER BOTTOM CONTROLS -->
+          <div class="slider-controls-bar">
+            <button class="slider-nav-btn" id="sliderPrevBtn" aria-label="Önceki Slayt">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- PAGINATION DOTS WITH ANIMATED DURATION FILL -->
+            <div class="slider-pagination" id="sliderPagination" role="tablist">
+              <button class="slider-dot active" data-index="0" role="tab" aria-label="Slayt 1"><span class="dot-progress"></span></button>
+              <button class="slider-dot" data-index="1" role="tab" aria-label="Slayt 2"><span class="dot-progress"></span></button>
+              <button class="slider-dot" data-index="2" role="tab" aria-label="Slayt 3"><span class="dot-progress"></span></button>
+              <button class="slider-dot" data-index="3" role="tab" aria-label="Slayt 4"><span class="dot-progress"></span></button>
+              <button class="slider-dot" data-index="4" role="tab" aria-label="Slayt 5"><span class="dot-progress"></span></button>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Araç Tipi</label>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <label class="calc-radio-label selected">
-                  <input type="radio" name="vehicleType" value="sedan" checked>
-                  <i class="fa-solid fa-car-side"></i>
-                  <span>Binek Otomobil</span>
-                </label>
-                <label class="calc-radio-label">
-                  <input type="radio" name="vehicleType" value="suv">
-                  <i class="fa-solid fa-truck-pickup"></i>
-                  <span>SUV / Pikap</span>
-                </label>
-                <label class="calc-radio-label">
-                  <input type="radio" name="vehicleType" value="commercial">
-                  <i class="fa-solid fa-van-shuttle"></i>
-                  <span>Minibüs / Ticari</span>
-                </label>
-                <label class="calc-radio-label">
-                  <input type="radio" name="vehicleType" value="damaged">
-                  <i class="fa-solid fa-car-burst"></i>
-                  <span>Kazalı / Vinçli</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="quick-calc-summary">
-              <div>
-                <div class="calc-label">Tahmini Süre: <b id="displayDuration" style="color:var(--text-title);">10-15 dk</b></div>
-                <div class="calc-label">Mesafe: <b id="displayDistance" style="color:var(--text-title);">~5 km</b></div>
-              </div>
-              <div style="text-align: right;">
-                <div class="calc-label">Tahmini Tutar</div>
-                <div class="calc-price" id="displayPrice">1.100 - 1.350 ₺</div>
-              </div>
-            </div>
-
-            <a href="#" id="calcCtaBtn" class="btn-form-submit">
-              <i class="fa-brands fa-whatsapp"></i>
-              Bu Fiyatla Çekici Çağır
-            </a>
-          </form>
+            <button class="slider-nav-btn" id="sliderNextBtn" aria-label="Sonraki Slayt">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
