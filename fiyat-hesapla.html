@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çekici Fiyatı Hesapla | EYP Oto Kurtarma - Kırşehir Canlı Ücret Tarifesi</title>
+  <meta name="description"
+    content="Kırşehir merkez ve ilçeleri için anında oto çekici ve kurtarma ücreti hesaplama aracı. Şeffaf, sabit fiyat ve sürprizsiz çekici hizmeti.">
+  <link rel="canonical" href="https://www.eypotokurtarma.com/fiyat-hesapla.html">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- TOP STATUS BAR -->
+  <aside class="top-ticker-bar">
+    <div class="site-container">
+      <div class="top-ticker-inner">
+        <div class="top-ticker-badge">
+          <span class="live-indicator"><span class="pulse-dot"></span> 7/24 Nöbetçi Çekici Aktif</span>
+          <span>Şeffaf & Sabit Fiyat Garantisi</span>
+        </div>
+        <div class="top-ticker-info">
+          <a href="tel:+905550000000"><i class="fa-solid fa-phone-volume"></i> 0 (555) 000 00 00</a>
+          <span><i class="fa-solid fa-location-dot"></i> Kırşehir Sanayi Sitesi</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-wrapper">
+          <img src="assets/images/eyplogo.png" alt="EYP Oto Kurtarma" class="brand-logo-img">
+        </a>
+        <nav class="main-nav">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetler.html">Hizmetlerimiz</a>
+          <a href="bolgeler.html">Hizmet Bölgeleri</a>
+          <a href="fiyat-hesapla.html" class="active">Fiyat Hesapla</a>
+          <a href="iletisim.html">İletişim</a>
+        </nav>
+        <div class="header-actions">
+          <a href="tel:+905550000000" class="btn-emergency-call">
+            <i class="fa-solid fa-phone"></i>
+            <span>0555 000 00 00</span>
+          </a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="site-container">
+      <div class="breadcrumb">
+        <a href="index.html">Ana Sayfa</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Fiyat Hesaplama</span>
+      </div>
+      <h1 style="font-size:clamp(30px, 4vw, 48px); margin-bottom:12px;">Canlı Çekici Mesafe & Ücret Hesaplayıcı</h1>
+      <p style="color:var(--text-secondary); max-width:700px; font-size:16px;">
+        Kırşehir merkez ve ilçelerindeki konumunuzu seçin, araç tipinizi belirleyin; tahmini varış süresi ve şeffaf
+        çekici ücretini hemen öğrenin.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <section style="padding: clamp(50px, 7vw, 90px) 0; position:relative; z-index:2;">
+    <div class="site-container">
+      <div class="calculator-box">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <span class="section-tag"><i class="fa-solid fa-calculator"></i> Anında Şeffaf Fiyatlandırma</span>
+          <h2 style="font-size: 26px; margin-top: 6px;">Çekici Ücreti & Rota Tahmini</h2>
+          <p style="color:var(--text-secondary); font-size:14.5px;">Sürpriz yok, gizli ücret yok. Telefonda teyit edilen
+            net tutar.</p>
+        </div>
+
+        <form id="priceCalculatorForm" onsubmit="return false;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+            <div class="form-group">
+              <label class="form-label" for="calcFrom">1. Aracın Bulunduğu Konum</label>
+              <select id="calcFrom" class="form-control" style="padding:14px;">
+                <option value="kirsehir-merkez">Kırşehir Merkez (Şehir İçi)</option>
+                <option value="sanayi-sitesi">Yeni Sanayi Sitesi</option>
+                <option value="ahi-evran-bagbasi">Ahi Evran / Bağbaşı</option>
+                <option value="petlas-cevre-yolu">Petlas / Çevre Yolu Kavşağı</option>
+                <option value="ozbag">Özbağ Beldesi</option>
+                <option value="mucur">Mucur İlçesi (25 km)</option>
+                <option value="kaman">Kaman İlçesi (55 km)</option>
+                <option value="akpinar">Akpınar İlçesi (40 km)</option>
+                <option value="cicekdagi">Çiçekdağı İlçesi (65 km)</option>
+                <option value="boztepe">Boztepe İlçesi (20 km)</option>
+                <option value="akcakent">Akçakent İlçesi (68 km)</option>
+                <option value="d260-karayolu">D260 Karayolu (Ankara-Kayseri)</option>
+                <option value="d715-karayolu">D715 Karayolu (Kırıkkale Yolu)</option>
+                <option value="ankara">Şehirlerarası: Ankara (185 km)</option>
+                <option value="kayseri">Şehirlerarası: Kayseri (135 km)</option>
+                <option value="nevsehir">Şehirlerarası: Nevşehir (90 km)</option>
+                <option value="kirikkale">Şehirlerarası: Kırıkkale (110 km)</option>
+                <option value="aksaray">Şehirlerarası: Aksaray (110 km)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="calcServiceType">2. Talep Edilen Hizmet Türü</label>
+              <select id="calcServiceType" class="form-control" style="padding:14px;">
+                <option value="kayar-kasa">Kayar Kasa Standart Çekici (Yürür Durumda)</option>
+                <option value="vinc">Ahtapot Vinçli Kurtarma (Kaza / Hendek / Kilitli)</option>
+                <option value="sehirlerarasi">Şehirlerarası Araç Transferi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label class="form-label">3. Araç Tipi Seçiniz</label>
+            <div class="calc-options-grid">
+              <label class="calc-radio-label selected">
+                <input type="radio" name="vehicleType" value="sedan" checked>
+                <i class="fa-solid fa-car-side"></i>
+                <span>Binek Otomobil / Hatchback / Sedan</span>
+              </label>
+
+              <label class="calc-radio-label">
+                <input type="radio" name="vehicleType" value="suv">
+                <i class="fa-solid fa-truck-pickup"></i>
+                <span>SUV / Crossover / 4x4 Pikap</span>
+              </label>
+
+              <label class="calc-radio-label">
+                <input type="radio" name="vehicleType" value="commercial">
+                <i class="fa-solid fa-van-shuttle"></i>
+                <span>Minibüs / Panelvan / Ticari</span>
+              </label>
+
+              <label class="calc-radio-label">
+                <input type="radio" name="vehicleType" value="moto">
+                <i class="fa-solid fa-motorcycle"></i>
+                <span>Motosiklet / Scooter / ATV</span>
+              </label>
+
+              <label class="calc-radio-label">
+                <input type="radio" name="vehicleType" value="damaged">
+                <i class="fa-solid fa-car-burst"></i>
+                <span>Ağır Hasarlı / Tekeri Dönmeyen</span>
+              </label>
+
+              <label class="calc-radio-label">
+                <input type="radio" name="vehicleType" value="heavy">
+                <i class="fa-solid fa-tractor"></i>
+                <span>Kamyonet / Traktör / Zirai Araç</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- RESULT DISPLAY -->
+          <div class="calc-result-display">
+            <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+              <div>
+                <div style="font-size:13px; color:var(--text-secondary);">Tahmini Mesafe</div>
+                <div id="displayDistance" style="font-size:24px; font-weight:800; color:var(--text-title);">~5 km</div>
+              </div>
+              <div>
+                <div style="font-size:13px; color:var(--text-secondary);">Tahmini Varış Süresi</div>
+                <div id="displayDuration" style="font-size:24px; font-weight:800; color:var(--emerald-500);">10-15 dk
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; color:var(--text-secondary);">Tahmini Tutar Aralığı</div>
+                <div id="displayPrice" style="font-size:28px; font-weight:900; color:var(--orange-400);">1.100 - 1.350 ₺
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="tel:+905550000000" class="btn-primary-rescue" style="padding:14px 22px; font-size:15px;">
+                <i class="fa-solid fa-phone"></i> Hemen Ara & Çağır
+              </a>
+              <a href="#" id="calcCtaBtn" class="btn-whatsapp-rescue" style="padding:14px 22px; font-size:15px;">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp'tan Onayla
+              </a>
+            </div>
+          </div>
+        </form>
+
+        <div
+          style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-info-circle" style="color:var(--orange-400);"></i>
+          <span>Belirtilen fiyatlar yaklaşık piyasa referans aralığı olup, olağanüstü arazi koşulları, bekleme süresi
+            veya çift çekici gereksinimi gibi etkenlere göre nihai tutar telefon görüşmesinde netleştirilir.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/eyplogo.png" alt="EYP Oto Kurtarma"
+            style="height: 52px; width:auto; margin-bottom: 12px;">
+          <p>Kırşehir ve İç Anadolu genelinde 7/24 kesintisiz profesyonel oto çekici, kayar kasa kurtarma ve acil yol
+            yardım hizmetleri.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Menü</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+            <li><a href="bolgeler.html">Hizmet Bölgeleri</a></li>
+            <li><a href="fiyat-hesapla.html">Fiyat Hesapla</a></li>
+            <li><a href="iletisim.html">İletişim & Harita</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hizmetlerimiz</h4>
+          <ul class="footer-links">
+            <li><a href="hizmetler.html#kayar-kasa">Kayar Kasa Çekici</a></li>
+            <li><a href="hizmetler.html#vinc">Ahtapot Vinçli Kurtarma</a></li>
+            <li><a href="hizmetler.html#yol-yardim">Akü Takviye & Yol Yardım</a></li>
+            <li><a href="hizmetler.html#sehirlerarasi">Şehirlerarası Taşıma</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>7/24 İletişim</h4>
+          <a href="tel:+905550000000"
+            style="display:inline-block; font-size:20px; font-weight:900; color:var(--orange-400); margin-bottom: 8px;">0 (555) 000 00 00</a>
+          <p style="font-size: 13px; color: var(--text-muted);">Yeni Sanayi Sitesi, Merkez / Kırşehir</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 EYP Oto Kurtarma - Kırşehir. Tüm Hakları Saklıdır.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY -->
+  <aside class="mobile-sticky-emergency">
+    <div class="sticky-bar-grid">
+      <a href="tel:+905550000000" class="btn-sticky-call"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
+      <a href="#" class="btn-sticky-whatsapp" data-action="send-live-location"><i class="fa-brands fa-whatsapp"></i>
+        Konum Gönder</a>
+    </div>
+  </aside>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-header">
+        <img src="assets/images/eyplogo.png" alt="EYP Oto Kurtarma" style="height: 48px; width:auto;">
+        <button class="drawer-close" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <nav class="drawer-links">
+        <a href="index.html"><span>Ana Sayfa</span> <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="hizmetler.html"><span>Hizmetlerimiz</span> <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="bolgeler.html"><span>Hizmet Bölgeleri</span> <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="fiyat-hesapla.html" class="active"><span>Fiyat Hesapla</span> <i
+            class="fa-solid fa-chevron-right"></i></a>
+        <a href="iletisim.html"><span>İletişim & Harita</span> <i class="fa-solid fa-chevron-right"></i></a>
+      </nav>
+    </div>
+    <div class="drawer-bottom">
+      <a href="tel:+905550000000" class="btn-primary-rescue" style="width: 100%; text-align: center;"><i
+          class="fa-solid fa-phone"></i> 0555 000 00 00 Ara</a>
+    </div>
+  </aside>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

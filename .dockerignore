@@ -1,0 +1,7 @@
+.git
+.github
+node_modules
+*.log
+temp_*
+callout_shot*
+assets/images/original_backup/
