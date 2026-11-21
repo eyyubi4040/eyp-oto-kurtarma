@@ -4,6 +4,8 @@
   "description": "EYP Oto Kurtarma - Kırşehir 7/24 Oto Çekici ve Yol Yardım",
   "scripts": {
     "dev": "bun x serve . -p 3000",
+    "start": "bun x serve . -p 3000",
+    "build": "echo 'Static build ready'",
     "sync": "bun run C:\\Users\\EyCodex\\.gemini\\config\\scripts\\upload-assets.ts \"e:\\PROJELER\\eyp-oto-kurtarma\""
   }
 }

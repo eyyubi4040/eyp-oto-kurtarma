@@ -5,17 +5,14 @@
 
 FROM nginx:alpine
 
-# Copy custom Nginx configuration for Clean URLs, Gzip & caching
+# Copy custom Nginx configuration for Clean URLs, Gzip & dual-port support
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Copy static website files
 COPY . /usr/share/nginx/html
 
-# Expose HTTP port 80
+# Expose HTTP port 80 and port 3000 (Dokploy default)
 EXPOSE 80
-
-# Dokploy healthcheck
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://127.0.0.1/health || exit 1
+EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
