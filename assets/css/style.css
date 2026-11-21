@@ -2599,9 +2599,38 @@ footer.site-footer {
   flex-wrap: wrap;
   gap: 16px;
   padding-top: 24px;
+  padding-right: 48px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 13.5px;
   color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-designer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-designer-credit a {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.footer-designer-credit a:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.kwd-logo-img {
+  height: 26px;
+  width: auto;
+  max-width: 135px;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: brightness(1.05) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
 
 /* ==========================================================================
@@ -2988,6 +3017,14 @@ footer.site-footer {
   }
   .calc-options-grid {
     grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .footer-designer-credit {
+    justify-content: center;
   }
   body {
     padding-bottom: 74px; /* Space for sticky bar */
